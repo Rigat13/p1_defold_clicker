@@ -3,9 +3,13 @@ function init(self)
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("left") then
-		local pos = go.get_position()
-		pos.x = pos.x + 10
-		go.set_position(pos)
+	local original_scale = go.get_scale()
+	if action_id == hash("button_left") and action.pressed then
+		local pressed_scale = go.get_scale()
+		pressed_scale.x = pressed_scale.x + 0.1
+		pressed_scale.y = pressed_scale.x + 0.1
+		go.set_scale(pressed_scale)
+	elseif then
+		go.set_scale(original_scale)
 	end
 end
