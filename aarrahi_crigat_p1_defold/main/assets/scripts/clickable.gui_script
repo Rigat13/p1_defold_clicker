@@ -13,6 +13,10 @@ function on_input(self, action_id, action)
 		if gui.pick_node(button, action.x, action.y) then -- <5>
 			clicks = clicks+1
 			gui.set_text(comptador, clicks) 
+			go.animate(".", "scale", go.PLAYBACK_ONCE_FORWARD, go.EASING_LINEAR, 1.2, 0)
+		end
+		if action_id == hash("left_click") and action.released and gui.pick_node(button, action.x, action.y) then
+			go.animate(".", "scale", go.PLAYBACK_ONCE_FORWARD, go.EASING_LINEAR, 1.2, 0)
 		end
 	end
 end
