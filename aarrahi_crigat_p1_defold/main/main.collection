@@ -59,8 +59,8 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"Clickable\"\n"
   "  type: \"sprite\"\n"
-  "  data: \"tile_set: \\\"/builtins/graphics/particle_blob.tilesource\\\"\\n"
-  "default_animation: \\\"anim\\\"\\n"
+  "  data: \"tile_set: \\\"/main/assets/textures/clickable_texture.atlas\\\"\\n"
+  "default_animation: \\\"clickable_texture\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -76,15 +76,15 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "  scale {\n"
-  "    x: 5.0\n"
-  "    y: 5.0\n"
-  "    z: 5.0\n"
+  "    x: 0.5\n"
+  "    y: 0.5\n"
+  "    z: 0.5\n"
   "  }\n"
   "}\n"
   ""
   position {
-    x: 152.0
-    y: 418.0
+    x: 746.0
+    y: 372.0
     z: 0.0
   }
   rotation {
