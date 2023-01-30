@@ -6,7 +6,7 @@ end
 function update(self, dt)
 	self.current_time = self.current_time - dt
 	if self.current_time < 0 then
-		-- TODO: CALL CLICK function
+		msg.post("clickable_space#gui", "receive_click")
 		self.current_time = click_time
 		animate()
 	end
