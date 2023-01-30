@@ -1,4 +1,4 @@
-script: "/main/assets/scripts/clickable.gui_script"
+script: "/main/assets/scripts/clickable/clickable.gui_script"
 fonts {
   name: "montserrat_extrabolditalic_font"
   font: "/main/assets/fonts/montserrat_extrabolditalic_font.font"
