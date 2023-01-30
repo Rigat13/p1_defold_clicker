@@ -3,10 +3,10 @@ key_trigger {
   action: "left"
 }
 mouse_trigger {
-  input: MOUSE_BUTTON_1
-  action: "touch"
-}
-mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "button_left"
+}
+mouse_trigger {
+  input: MOUSE_BUTTON_1
+  action: "touch"
 }
