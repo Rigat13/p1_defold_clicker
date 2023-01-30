@@ -11,10 +11,20 @@ function on_input(self, action_id, action)
 	if action_id == hash("touch") and action.pressed then
 		local button = gui.get_node("button")
 		if gui.pick_node(button, action.x, action.y) then
-			clicks = clicks+1
-			gui.set_text(comptador, clicks)
-			msg.post("clickable_sprite#clickable_animation", "click")
-			msg.post("clickable_object#autoclicker_spawner", "receive_click")
+			click()
 		end
 	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("receive_click") then
+		click()
+	end
+end
+
+function click()
+	clicks = clicks+1
+	gui.set_text(comptador, clicks)
+	msg.post("clickable_sprite#clickable_animation", "click")
+	msg.post("clickable_object#autoclicker_spawner", "receive_click")
 end
