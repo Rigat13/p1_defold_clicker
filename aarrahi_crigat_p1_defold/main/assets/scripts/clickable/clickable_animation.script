@@ -1,6 +1,5 @@
 local initial_scale
 function init(self)
-	msg.post(".", "acquire_input_focus")
 	initial_scale = go.get_scale()
 end
 

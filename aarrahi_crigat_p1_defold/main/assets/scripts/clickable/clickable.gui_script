@@ -13,7 +13,8 @@ function on_input(self, action_id, action)
 		if gui.pick_node(button, action.x, action.y) then
 			clicks = clicks+1
 			gui.set_text(comptador, clicks)
-			msg.post("clickable_object#clickable_animation", "click")
+			msg.post("clickable_sprite#clickable_animation", "click")
+			msg.post("clickable_object#autoclicker_spawner", "spawn_autoclick")
 		end
 	end
 end

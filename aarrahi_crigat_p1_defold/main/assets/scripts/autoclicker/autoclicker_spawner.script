@@ -1,0 +1,24 @@
+local initial_spawn_x = 100
+local initial_spawn_y = 50
+local spawn_x_offset = 50
+local current_spawn_x
+local current_spawn_y
+
+function init(self)
+	current_spawn_x = initial_spawn_x
+	current_spawn_y = initial_spawn_y
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("spawn_autoclick") then
+		spawn_autoclick()
+	end
+end
+
+function spawn_autoclick()
+	local pos = vmath.vector3(current_spawn_x, current_spawn_y, 0)
+	current_spawn_x = current_spawn_x + spawn_x_offset
+	local autoclicker_id = factory.create("#autoclicker_factory", pos)
+
+	go.animate(autoclicker_id, "euler.z", go.PLAYBACK_ONCE_FORWARD, 360, go.EASING_LINEAR, 1, 0)
+end
