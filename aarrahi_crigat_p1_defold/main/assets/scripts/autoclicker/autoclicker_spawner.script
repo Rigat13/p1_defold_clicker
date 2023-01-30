@@ -4,14 +4,26 @@ local spawn_x_offset = 50
 local current_spawn_x
 local current_spawn_y
 
+local clicks_to_spawm = 10
+local remaining_clicks_to_spawn
+
 function init(self)
 	current_spawn_x = initial_spawn_x
 	current_spawn_y = initial_spawn_y
+	remaining_clicks_to_spawn = clicks_to_spawm
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("spawn_autoclick") then
+	if message_id == hash("receive_click") then
+		receive_click()
+	end
+end
+
+function receive_click()
+	remaining_clicks_to_spawn = remaining_clicks_to_spawn - 1
+	if remaining_clicks_to_spawn <= 0 then
 		spawn_autoclick()
+		remaining_clicks_to_spawn = clicks_to_spawm
 	end
 end
 
