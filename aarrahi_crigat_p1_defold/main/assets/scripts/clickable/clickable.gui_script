@@ -2,15 +2,15 @@ local clicks = 0
 local comptador
 
 function init(self)
-	msg.post(".", "acquire_input_focus") -- <1>
+	msg.post(".", "acquire_input_focus")
 	comptador = gui.get_node("comptador")
 	gui.set_text(comptador, clicks) 
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("touch") and action.pressed then -- <2>
-		local button = gui.get_node("button") -- <3>
-		if gui.pick_node(button, action.x, action.y) then -- <5>
+	if action_id == hash("touch") and action.pressed then
+		local button = gui.get_node("button")
+		if gui.pick_node(button, action.x, action.y) then
 			clicks = clicks+1
 			gui.set_text(comptador, clicks)
 			msg.post("clickable_object#clickable_animation", "click")
