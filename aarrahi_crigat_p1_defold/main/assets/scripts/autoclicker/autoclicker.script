@@ -1,0 +1,18 @@
+local click_time = 3
+function init(self)
+	self.current_time = click_time
+end
+
+function update(self, dt)
+	self.current_time = self.current_time - dt
+	if self.current_time < 0 then
+		-- TODO: CALL CLICK function
+		self.current_time = click_time
+		animate()
+	end
+end
+
+function animate()
+	go.set_scale(initial_scale)
+	go.animate(".", "scale", go.PLAYBACK_ONCE_PINGPONG, go.EASING_OUTSINE / 10, 1, 0.5)
+end
