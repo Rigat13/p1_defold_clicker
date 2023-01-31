@@ -1,10 +1,12 @@
 local clicks = 0
 local comptador
+local autoclicker_spawn_counter
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	comptador = gui.get_node("comptador")
 	gui.set_text(comptador, clicks) 
+	autoclicker_spawn_counter = gui.get_node("autoclicker_spawn_counter")
 end
 
 function on_input(self, action_id, action)
@@ -20,6 +22,9 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("receive_click") then
 		click()
 	end
+	if message_id == hash("update_autoclicker_spawn_counter") then
+		update_autoclicker_spawn_counter()
+	end
 end
 
 function click()
@@ -27,4 +32,8 @@ function click()
 	gui.set_text(comptador, clicks)
 	msg.post("clickable_sprite#clickable_animation", "click")
 	msg.post("clickable_object#autoclicker_spawner", "receive_click")
+end
+
+function update_autoclicker_spawn_counter()
+	gui.set_fill_angle(autoclicker_spawn_counter, 100)
 end
