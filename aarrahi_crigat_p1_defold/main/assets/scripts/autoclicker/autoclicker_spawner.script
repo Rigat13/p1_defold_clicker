@@ -21,11 +21,11 @@ end
 
 function receive_click()
 	remaining_clicks_to_spawn = remaining_clicks_to_spawn - 1
-	msg.post("clickable_space#gui", "update_autoclicker_spawn_counter")
 	if remaining_clicks_to_spawn <= 0 then
 		spawn_autoclick()
 		remaining_clicks_to_spawn = clicks_to_spawm
 	end
+	msg.post("clickable_space#gui", "update_autoclicker_spawn_counter", { remaining = remaining_clicks_to_spawn, total = clicks_to_spawm })
 end
 
 function spawn_autoclick()

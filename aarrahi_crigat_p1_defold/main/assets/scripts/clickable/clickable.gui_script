@@ -23,7 +23,7 @@ function on_message(self, message_id, message, sender)
 		click()
 	end
 	if message_id == hash("update_autoclicker_spawn_counter") then
-		update_autoclicker_spawn_counter()
+		update_autoclicker_spawn_counter(message.remaining, message.total)
 	end
 end
 
@@ -34,6 +34,7 @@ function click()
 	msg.post("clickable_object#autoclicker_spawner", "receive_click")
 end
 
-function update_autoclicker_spawn_counter()
-	gui.set_fill_angle(autoclicker_spawn_counter, 100)
+function update_autoclicker_spawn_counter(remaining_clicks_to_spawn, total_clicks_to_spawn)
+	angle = remaining_clicks_to_spawn / total_clicks_to_spawn * 360
+	gui.set_fill_angle(autoclicker_spawn_counter, angle)
 end
