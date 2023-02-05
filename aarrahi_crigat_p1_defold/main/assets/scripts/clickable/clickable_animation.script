@@ -1,9 +1,11 @@
 local initial_scale
 local m_scale
+
 go.property("mScale", 5)
 function init(self)
 	initial_scale = go.get_scale()
 	m_scale = self.mScale
+	go.animate(".", "rotation", go.PLAYBACK_LOOP_PINGPONG, vmath.quat_rotation_z(-1.57),  go.EASING_LINEAR, 8)
 end
 
 function on_message(self, message_id, message, sender)
@@ -15,5 +17,5 @@ end
 
 function animate()
 	go.set_scale(initial_scale)
-	go.animate(".", "scale", go.PLAYBACK_ONCE_PINGPONG, go.EASING_OUTSINE / m_scale, 1, 0.5)
+	go.animate(".", "scale", go.PLAYBACK_ONCE_PINGPONG, go.EASING_OUTINBOUNCE / m_scale, 1, 0.5)
 end
