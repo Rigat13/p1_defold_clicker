@@ -1,11 +1,17 @@
 local clicks = 0
 local comptador
 local autoclicker_spawn_counter
+local autoclickers = 0
+local autoclicker_comptador
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	comptador = gui.get_node("comptador")
 	gui.set_text(comptador, clicks) 
+	
+	autoclicker_comptador = gui.get_node("autoclicker_comptador")
+	gui.set_text(autoclicker_comptador, "+") 
+	
 	autoclicker_spawn_counter = gui.get_node("autoclicker_spawn_counter")
 end
 
@@ -26,16 +32,25 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("update_autoclicker_spawn_counter") then
 		update_autoclicker_spawn_counter(message.remaining, message.total)
 	end
+	if message_id == hash("add_autoclicker") then
+		add_autoclicker()
+	end
 end
 
 function click()
 	clicks = clicks+1
 	gui.set_text(comptador, clicks)
 	msg.post("clickable_sprite#clickable_animation", "click")
-	msg.post("clickable_object#autoclicker_spawner", "receive_click")
+	msg.post("autoclicker_center#autoclicker_spawner", "receive_click")
 end
 
 function update_autoclicker_spawn_counter(remaining_clicks_to_spawn, total_clicks_to_spawn)
 	angle = remaining_clicks_to_spawn / total_clicks_to_spawn * 360
 	gui.set_fill_angle(autoclicker_spawn_counter, angle)
+end
+
+function add_autoclicker()
+	autoclickers = autoclickers+1
+	local text = "+"..autoclickers
+	gui.set_text(autoclicker_comptador, text)
 end

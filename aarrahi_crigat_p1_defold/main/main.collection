@@ -2,30 +2,9 @@ name: "main"
 scale_along_z: 0
 embedded_instances {
   id: "clickable_object"
+  children: "autoclicker_center"
   children: "clickable_sprite"
-  data: "components {\n"
-  "  id: \"autoclicker_spawner\"\n"
-  "  component: \"/main/assets/scripts/autoclicker/autoclicker_spawner.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "  properties {\n"
-  "    id: \"clicks_to_spawm\"\n"
-  "    value: \"10.0\"\n"
-  "    type: PROPERTY_TYPE_NUMBER\n"
-  "  }\n"
-  "  property_decls {\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
+  data: "embedded_components {\n"
   "  id: \"autoclicker_factory_1\"\n"
   "  type: \"factory\"\n"
   "  data: \"prototype: \\\"/main/assets/scripts/autoclicker/autoclicker1.go\\\"\\n"
@@ -284,6 +263,65 @@ embedded_instances {
     x: 0.0
     y: 0.0
     z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "autoclicker_center"
+  data: "components {\n"
+  "  id: \"autoclicker_center_script\"\n"
+  "  component: \"/main/assets/scripts/autoclicker/autoclicker_center_script.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  property_decls {\n"
+  "  }\n"
+  "}\n"
+  "components {\n"
+  "  id: \"autoclicker_spawner\"\n"
+  "  component: \"/main/assets/scripts/autoclicker/autoclicker_spawner.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "  properties {\n"
+  "    id: \"clicks_to_spawm\"\n"
+  "    value: \"10.0\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "  property_decls {\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: -0.8
   }
   rotation {
     x: 0.0

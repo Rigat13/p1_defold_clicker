@@ -1,8 +1,10 @@
-local initial_spawn_x = 100
-local initial_spawn_y = 50
+local initial_spawn_x = 250
+local initial_spawn_y = 350
 local spawn_x_offset = 50
 local current_spawn_x
 local current_spawn_y
+local autoclickers_current_amount = 0
+local autoclickers_total = 0
 
 go.property("clicks_to_spawm", 10)
 local cTSpawn
@@ -35,18 +37,29 @@ end
 
 function spawn_autoclick()
 	local pos = vmath.vector3(current_spawn_x, current_spawn_y, 0)
-	current_spawn_x = current_spawn_x + spawn_x_offset
+	update_autoclick_spawn_pos()
 	local current_factory = get_current_factory()
 	local autoclicker_id = factory.create(current_factory, pos)
-
+	msg.post(autoclicker_id, "set_parent", { parent_id = go.get_id(), keep_world_transform = 1 })
+	
 	go.animate(autoclicker_id, "euler.z", go.PLAYBACK_ONCE_FORWARD, 360, go.EASING_LINEAR, 1, 0)
 end
 
 function get_current_factory()
 	time_to_factory_1 = not time_to_factory_1
 	if time_to_factory_1 then
-		return "#autoclicker_factory_1"
+		return "clickable_object#autoclicker_factory_1"
 	else
-		return "#autoclicker_factory_2"
+		return "clickable_object#autoclicker_factory_2"
+	end
+end
+
+function update_autoclick_spawn_pos()
+	autoclickers_current_amount = autoclickers_current_amount + 1
+	autoclickers_total = autoclickers_total + 1
+	msg.post("clickable_space#gui", "add_autoclicker")
+	if autoclickers_current_amount > 20 then
+		autoclickers_current_amount = 0
+		current_spawn_x = current_spawn_x - spawn_x_offset
 	end
 end
