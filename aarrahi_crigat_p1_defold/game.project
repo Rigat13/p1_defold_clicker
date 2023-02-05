@@ -13,4 +13,13 @@ input_method = HiddenInputField
 
 [project]
 title = aarrahi_crigat_p1_defold
+publisher = TecnoCampus Mataró
+developer = Anass Arrahi & Carles Rigat
+
+[html5]
+splash_image = /main/assets/textures/background.png
+show_made_with_defold = 0
+
+[windows]
+app_icon = /main/assets/textures/clickable_texture.ico
 
