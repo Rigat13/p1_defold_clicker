@@ -11,6 +11,7 @@ local cTSpawn
 local remaining_clicks_to_spawn
 
 function init(self)
+	msg.post("clickable_object#background_sound", "play_sound")
 	cTSpawn = self.clicks_to_spawm
 	current_spawn_x = initial_spawn_x
 	current_spawn_y = initial_spawn_y
