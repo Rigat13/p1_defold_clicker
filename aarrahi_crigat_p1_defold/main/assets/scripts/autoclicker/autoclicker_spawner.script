@@ -6,9 +6,9 @@ local current_spawn_y
 
 go.property("clicks_to_spawm", 10)
 local cTSpawn
-
-
 local remaining_clicks_to_spawn
+
+local time_to_factory_1 = false
 
 function init(self)
 	msg.post("clickable_object#background_sound", "play_sound")
@@ -36,7 +36,17 @@ end
 function spawn_autoclick()
 	local pos = vmath.vector3(current_spawn_x, current_spawn_y, 0)
 	current_spawn_x = current_spawn_x + spawn_x_offset
-	local autoclicker_id = factory.create("#autoclicker_factory", pos)
+	local current_factory = get_current_factory()
+	local autoclicker_id = factory.create(current_factory, pos)
 
 	go.animate(autoclicker_id, "euler.z", go.PLAYBACK_ONCE_FORWARD, 360, go.EASING_LINEAR, 1, 0)
+end
+
+function get_current_factory()
+	time_to_factory_1 = not time_to_factory_1
+	if time_to_factory_1 then
+		return "#autoclicker_factory_1"
+	else
+		return "#autoclicker_factory_2"
+	end
 end
