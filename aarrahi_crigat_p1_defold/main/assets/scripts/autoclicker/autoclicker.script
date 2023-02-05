@@ -1,13 +1,13 @@
-local click_time = 3
+go.property("click_time", 3)
 function init(self)
-	self.current_time = click_time
+	self.current_time = self.click_time
 end
 
 function update(self, dt)
 	self.current_time = self.current_time - dt
 	if self.current_time < 0 then
 		msg.post("clickable_space#gui", "receive_click")
-		self.current_time = click_time
+		self.current_time = self.click_time
 		animate()
 	end
 end
