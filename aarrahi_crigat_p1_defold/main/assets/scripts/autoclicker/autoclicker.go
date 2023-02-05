@@ -14,7 +14,7 @@ components {
   }
   properties {
     id: "click_time"
-    value: "0.5"
+    value: "5.0"
     type: PROPERTY_TYPE_NUMBER
   }
 }
