@@ -196,7 +196,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"clicker_sound\"\n"
   "  type: \"sound\"\n"
-  "  data: \"sound: \\\"/main/assets/sfx/clicker_sound_sfx.ogg\\\"\\n"
+  "  data: \"sound: \\\"/main/assets/sfx/meow_sound.ogg\\\"\\n"
   "looping: 0\\n"
   "group: \\\"master\\\"\\n"
   "gain: 0.1\\n"
@@ -265,7 +265,7 @@ embedded_instances {
   position {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: -1.0
   }
   rotation {
     x: 0.0
